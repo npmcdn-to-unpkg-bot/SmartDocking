@@ -1,0 +1,38 @@
+<input type="text" class="form-control search-query" id="projectSearch" [(ngModel)]="name" placeholder="search">
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Dock group name</th>
+        <th>Dock group Id</th>
+        <th>Owner</th>
+        <th>
+            <a [routerLink]="['/editProject', 0]">
+                <span class="octicon octicon-plus"></span>
+            </a>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pro of (projects | projectFilter:name)">
+          <td>
+              <a [routerLink]="['/dock', pro[0].id]">
+                  {{pro[0].name}}
+              </a>
+          </td>
+          <td>
+              {{pro[0].id}}
+          </td>
+          <td>{{pro[2]}}</td>
+          <td>
+            <div href="#" [ngSwitch]="pro[1]">
+                <div *ngSwitchCase="'Owner'">
+                    <a [routerLink]="['/editProject', pro[0].id]"><span class="octicon octicon-pencil"></span></a>
+                </div>
+                <div *ngSwitchDefault></div>
+            </div>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+</div>

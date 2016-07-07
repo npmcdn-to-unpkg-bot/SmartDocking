@@ -1,0 +1,32 @@
+<div [hidden]="error.length == 0">
+    <div class="alert alert-danger">
+        {{error}}
+        <a (click)="refresh()">
+            refresh
+        </a>
+    </div>
+</div>
+<div [hidden]="!nameStage">
+    <div class="alert alert-success" role="alert">
+        <strong>Successfully scanned card. rfid: {{tag}}</strong> Enter employee name
+    </div>
+</div>
+<div [hidden]="!nameStage">
+    <label>Employee Name</label>
+    <input  [(ngModel)]="name" type="text" class="form-control">
+    <br/>
+    <div class="btn-group">
+        <button (click)="cancel()" type="button" class="btn btn-default">Cancel</button>
+        <button [disabled]="name.length <= 0" (click)="save()" type="button" class="btn btn-primary">Save</button>
+    </div>
+</div>
+
+<div [hidden]="!ready">
+    <div class="alert alert-info" role="alert">
+        <center><strong>Scan card now.</strong></center>
+    </div>
+    <center>
+        <img src="/assets/images/nfc.png" alt="Mountain View" style="width:300px;height:300px;">
+    </center>
+    <button (click)="cancel()" type="button" class="btn btn-default">Cancel</button>
+</div>

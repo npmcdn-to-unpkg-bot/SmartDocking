@@ -1,0 +1,32 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>rfid</th>
+        <th>
+            <a [routerLink]="['/addEmployee', projectId]">
+                <span class="octicon octicon-plus"></span>
+            </a>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees">
+          <td>
+            {{emp.name}}
+          </td>
+          <td>
+              {{emp.rfid}}
+          </td>
+          <td>
+            <a (click)="delete(emp.name, emp.rfid)"><span class="octicon octicon-trashcan"></span></a>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+    <div [hidden]="error.length == 0">
+        <div class="alert alert-danger">
+            {{error}}
+        </div>
+    </div>
+</div>
